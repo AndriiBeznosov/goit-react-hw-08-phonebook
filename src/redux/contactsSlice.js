@@ -1,32 +1,47 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import contactsDefault from '../contants/contactsDefault.json';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
-export const contactsSlice = createSlice({
+const hendlePending = state => {
+  state.isLoading = true;
+};
+const hendleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: { contacts: contactsDefault },
-  reducers: {
-    addContacts(state, action) {
-      state.contacts.push(action.payload);
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
+  extraReducers: {
+    [fetchContacts.pending]: hendlePending,
+    [fetchContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
     },
-    removeContacts(state, action) {
-      const indecContact = state.contacts.findIndex(
-        contact => contact.id === action.payload
+    [fetchContacts.rejected]: hendleRejected,
+    [addContact.pending]: hendlePending,
+    [addContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(action.payload);
+    },
+    [addContact.rejected]: hendleRejected,
+    [deleteContact.pending]: hendlePending,
+    [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const indecContact = state.items.findIndex(
+        contact => contact.id === action.payload.id
       );
-      state.contacts.splice(indecContact, 1);
+      state.items.splice(indecContact, 1);
     },
+    [deleteContact.rejected]: hendleRejected,
   },
 });
 
-const persistConfig = {
-  key: 'contacts-list',
-  storage,
-};
-
-export const persistedClickReducer = persistReducer(
-  persistConfig,
-  contactsSlice.reducer
-);
-
-export const { addContacts, removeContacts } = contactsSlice.actions;
+export const contactsReduser = contactsSlice.reducer;

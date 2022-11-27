@@ -1,43 +1,40 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
+import { Loading } from 'components/Loading/Loading';
 import { List, Item, Span, Button } from './ContactList.styled';
-import { removeContacts } from 'redux/contactsSlice';
-import { getContacts, getFilter } from 'redux/selectors';
+
+import { fetchContacts, deleteContact } from 'redux/operations';
+import { filterListContacts, getError, getIsLoading } from 'redux/selectors';
 
 export const ContactList = () => {
-  const contactListRedux = useSelector(getContacts);
-  const filterName = useSelector(getFilter);
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+  const contactList = useSelector(filterListContacts);
 
-  const filterListContacts = contactListRedux.contacts.filter(({ name }) => {
-    return name.toLowerCase().includes(filterName.toLowerCase());
-  });
-
-  const deleteFilterContact = idContact => {
-    return contactListRedux.contacts.filter(contact => {
-      if (contact.id === idContact) {
-        toast.info(' Contact deleted. ✅ ');
-      }
-      return contact.id !== idContact;
-    });
-  };
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const deletContact = idContact => {
-    dispatch(removeContacts(deleteFilterContact(idContact)));
+    dispatch(deleteContact(idContact));
+    toast.info(' Contact deleted. ✅ ');
   };
 
   return (
     <List>
-      {filterListContacts.map(({ id, name, number }) => (
+      {isLoading && <Loading visible={isLoading} />}
+      {error && <p>{error}</p>}
+      {contactList.map(({ id, name, phone }) => (
         <Item key={id} id={id}>
           <Span>{name} </Span>
-          <Span>{number}</Span>
+          <Span>{phone}</Span>
           <Button
             type="button"
-            onClick={() => {
-              deletContact(id);
-            }}
+            disabled={isLoading}
+            onClick={() => deletContact(id)}
           >
             Delete
           </Button>

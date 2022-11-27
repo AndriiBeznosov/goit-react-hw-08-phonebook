@@ -6,7 +6,7 @@ import { PatternFormat } from 'react-number-format';
 
 export const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setNumber] = useState('');
 
   const hendleChangeName = e => {
     setName(e.currentTarget.value);
@@ -17,7 +17,7 @@ export const ContactForm = ({ onSubmit }) => {
 
   const hendleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, number });
+    onSubmit({ name, phone });
     setName('');
     setNumber('');
   };
@@ -44,7 +44,7 @@ export const ContactForm = ({ onSubmit }) => {
           format="+38 (###)-###-##-##"
           allowEmptyFormatting
           mask="_"
-          value={number}
+          value={phone}
           onChange={hendleChangeNumber}
           type="tel"
           name="number"

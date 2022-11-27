@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
-import { addContacts } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 import { getContacts } from 'redux/selectors';
 
 import { Wrapper, Container } from './App.styled';
@@ -21,14 +21,15 @@ export const App = () => {
     if (!user) {
       return;
     }
-    const number = contacts.contacts.map(contact => contact.number);
+    const number = contacts.map(contact => contact.phone);
 
-    if (number.includes(user.number)) {
-      toast.error(`${user.number} is already in the contacts. ❌`);
+    if (number.includes(user.phone)) {
+      toast.error(`${user.phone} is already in the contacts. ❌`);
       return;
     }
     user.id = nanoid();
-    dispatch(addContacts(user));
+    const { name, phone, id } = user;
+    dispatch(addContact({ name, phone, id }));
 
     toast.success(' Contact addano. ✅');
   };
@@ -40,6 +41,7 @@ export const App = () => {
       <Container>
         <Caption title="Contacts" />
         <Filter />
+
         <ContactList />
       </Container>
       <ContainerToast />

@@ -1,17 +1,20 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  padding: 15px 30px;
+  position: relative;
+  padding: 15px 15px;
   background-color: ${p => p.theme.colors.backgroundColors};
   border-radius: 10px;
+  min-height: 100px;
 `;
 
 export const Item = styled.li`
   color: ${p => p.theme.colors.white};
   font-weight: 700;
   font-style: italic;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 190px 180px auto;
+  grid-column-gap: 10px;
   &:not(:last-child) {
     margin-bottom: 16px;
   }
