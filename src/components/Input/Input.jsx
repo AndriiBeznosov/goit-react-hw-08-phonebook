@@ -1,9 +1,5 @@
-import React from 'react';
-
 import { Input } from '../Form/Form.styled';
 
-export class InputElement extends React.Component {
-  render() {
-    return <Input {...this.props} />;
-  }
-}
+export const InputElement = props => {
+  return <Input {...props} />;
+};
