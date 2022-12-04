@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { PatternFormat } from 'react-number-format';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { Form, Label, Input, Span, Button } from './FormPatch.styled';
 import { InputElement } from '../Input/Input';
-import { PatternFormat } from 'react-number-format';
 import { filterListContacts } from 'redux/filter/selectors';
-import { useSelector } from 'react-redux';
 
 export const FornPatch = ({ onSubmit, modalClose, id }) => {
   const contactList = useSelector(filterListContacts);
@@ -63,4 +64,10 @@ export const FornPatch = ({ onSubmit, modalClose, id }) => {
       <Button type="submit">Save</Button>
     </Form>
   );
+};
+
+FornPatch.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  modalClose: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };

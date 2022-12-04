@@ -1,6 +1,7 @@
+import { useDispatch } from 'react-redux';
+
 import { Form } from 'components/Form/Form';
 import { useAuth } from 'hooks';
-import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 
 import { LoadingUser } from 'components/Loading/Loading';

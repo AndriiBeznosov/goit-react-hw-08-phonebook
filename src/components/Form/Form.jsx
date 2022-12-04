@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { FormContainer, Label, Input, Span, Button } from './Form.styled';
 import { InputElement } from '../Input/Input';
-// import { PatternFormat } from 'react-number-format';
 
 export const Form = ({ onSubmit, onType }) => {
   const [name, setName] = useState('');
@@ -72,4 +72,9 @@ export const Form = ({ onSubmit, onType }) => {
       <Button type="submit">Register</Button>
     </FormContainer>
   );
+};
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onType: PropTypes.object.isRequired,
 };

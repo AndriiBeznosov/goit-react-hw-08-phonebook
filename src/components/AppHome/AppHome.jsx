@@ -1,6 +1,6 @@
-import { Wrapper, Title, Text, Link, NavItem } from './AppHome.styled';
 import { BsLinkedin, BsGithub } from 'react-icons/bs';
 import { useAuth } from 'hooks';
+import { Wrapper, Title, Text, Link, NavItem } from './AppHome.styled';
 
 export const AppHome = () => {
   const { isLoggedIn } = useAuth();
@@ -24,7 +24,7 @@ export const AppHome = () => {
         Development, practice and work on the result are important for me. I
         intend to develop innovative technologies and benefit people.
       </Text>
-      {isLoggedIn && (
+      {!isLoggedIn && (
         <Text>
           To use the application you need to register, go to the tab
           <NavItem to="/register">Register</NavItem>

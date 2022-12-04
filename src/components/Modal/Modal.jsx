@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { FornPatch } from 'components/FormPatch/FormPatch';
 import { patchContacts } from 'redux/contacts/operations';
 
 import { Overlay, ModalContainer, Button } from './Modal.styled';
-import { useDispatch } from 'react-redux';
 
 export const Modal = ({ onClose, id }) => {
   const dispatch = useDispatch();
 
   const patchContact = e => {
-    console.log(e);
     dispatch(patchContacts(e));
   };
 
@@ -51,4 +50,5 @@ export const Modal = ({ onClose, id }) => {
 
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };

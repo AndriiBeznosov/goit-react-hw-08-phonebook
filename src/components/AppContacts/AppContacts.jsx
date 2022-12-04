@@ -1,21 +1,30 @@
 import React from 'react';
-import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
+import { toast } from 'react-toastify';
 
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
 
-import { Wrapper, Container } from './AppContacts.styled';
+import { useEffect } from 'react';
+import { Wrapper, Container, Img, ContainerImg } from './AppContacts.styled';
 import { ContactForm } from '../ContactForm/ContactForm';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from '../ContactList/ContactList';
 import { Caption } from '../Title/Title';
 import { ContainerToast } from '../ToastContainer/ToastContainer';
+import image from '../../images/astronavt (1).png';
+import { filterListContacts } from 'redux/filter/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
 
 export const AppContacts = () => {
+  const contactList = useSelector(filterListContacts);
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const addTodo = contact => {
     if (!contact) {
@@ -28,7 +37,7 @@ export const AppContacts = () => {
       return;
     }
     contact.id = nanoid();
-    // const { name, number, id } = contact;
+
     dispatch(addContact(contact));
 
     toast.success(' Contact addano. ✅');
@@ -42,7 +51,13 @@ export const AppContacts = () => {
         <Caption title="Contacts" />
         <Filter />
       </Container>
-      <ContactList />
+      {contactList.length > 0 ? (
+        <ContactList contactList={contactList} />
+      ) : (
+        <ContainerImg>
+          <Img src={image} alt="ast" />
+        </ContainerImg>
+      )}
       <ContainerToast />
     </Wrapper>
   );

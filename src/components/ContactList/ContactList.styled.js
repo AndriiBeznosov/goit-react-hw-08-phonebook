@@ -76,10 +76,3 @@ export const Error = styled.p`
   width: 100%;
   height: 100%;
 `;
-export const Img = styled.img`
-  width: 300px;
-`;
-export const ContainerImg = styled.div`
-  display: flex;
-  justify-content: center;
-`;

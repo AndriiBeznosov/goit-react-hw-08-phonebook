@@ -1,12 +1,13 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Lauout from 'components/Layout/Layout';
-import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
+import { LoadingUser } from 'components/Loading/Loading';
 
 const HomePage = lazy(() => import('pages/Home'));
 const ContactsPage = lazy(() => import('pages/Contacts'));
@@ -23,6 +24,7 @@ export const App = () => {
   return isRefreshing ? (
     <div>
       <h1>Fetching user data... </h1>
+      <LoadingUser />
     </div>
   ) : (
     <Routes>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { PatternFormat } from 'react-number-format';
+import PropTypes from 'prop-types';
 
 import { Form, Label, Input, Span, Button } from './ContactForm.styled';
 import { InputElement } from '../Input/Input';
-import { PatternFormat } from 'react-number-format';
 
 export const ContactForm = ({ onSubmit, text }) => {
   const [name, setName] = useState('');
@@ -56,4 +57,9 @@ export const ContactForm = ({ onSubmit, text }) => {
       <Button type="submit">{text}</Button>
     </Form>
   );
+};
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
 };

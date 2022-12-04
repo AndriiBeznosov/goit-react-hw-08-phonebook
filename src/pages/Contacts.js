@@ -7,7 +7,7 @@ const Contacts = () => {
   return (
     <>
       {isLoading && <LoadingUser />}
-      <AppContacts />;
+      <AppContacts />
     </>
   );
 };

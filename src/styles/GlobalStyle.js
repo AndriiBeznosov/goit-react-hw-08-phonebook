@@ -1,13 +1,15 @@
-@import-normalize; /* bring in normalize.css styles */
+import { createGlobalStyle } from 'styled-components';
+import images from '../images/zadnii-fon-dlya-intro.jpeg';
 
-body {
+export const GlobalStyle = createGlobalStyle`
+ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./images//zadnii-fon-dlya-intro.jpeg);
+  background-image: url(${images});
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -17,6 +19,7 @@ body {
   background-size: cover;
   padding-top: 10px;
   padding-bottom: 10px;
+  
 }
 
 code {
@@ -41,3 +44,4 @@ h6,
 p {
   margin: 0;
 }
+`;
