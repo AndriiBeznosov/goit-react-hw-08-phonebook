@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
-export const FormContainer = styled.form`
+export const Form = styled.form`
   background-color: ${p => p.theme.colors.backgroundColors};
   color: ${p => p.theme.colors.colorText};
   width: 320px;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   display: flex;
+  align-items: flex-end;
   flex-direction: column;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   box-shadow: 0px 0px 19px 0px rgba(69, 162, 158, 1);
   border-radius: 10px;
 `;
@@ -17,6 +18,10 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  width: 100%;
+  /* &:first-child {
+    margin-right: 10px;
+  } */
 `;
 export const Span = styled.span`
   margin-bottom: 3px;
@@ -28,6 +33,7 @@ export const Input = styled.input`
   border: 1px solid ${p => p.theme.colors.white};
   padding: 5px;
   font-weight: 700;
+
   &:active,
   &:focus {
     background-color: ${p => p.theme.colors.white};
@@ -36,7 +42,10 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  width: 150px;
+  display: block;
+  min-width: 130px;
+  height: 35px;
+  /* margin-left: 20px; */
   margin-left: auto;
   margin-right: auto;
   color: ${p => p.theme.colors.btnСolorText};

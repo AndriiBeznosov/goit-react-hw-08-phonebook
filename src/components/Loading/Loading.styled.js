@@ -8,5 +8,5 @@ export const Wrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
