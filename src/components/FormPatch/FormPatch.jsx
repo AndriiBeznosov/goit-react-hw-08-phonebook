@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Form, Label, Input, Span, Button } from './FormPatch.styled';
-import { InputElement } from '../Input/Input';
+import { InputElement } from '../UI/Input/Input';
 import { filterListContacts } from 'redux/filter/selectors';
 
 export const FornPatch = ({ onSubmit, modalClose, id }) => {

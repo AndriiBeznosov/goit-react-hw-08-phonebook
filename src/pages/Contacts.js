@@ -1,6 +1,6 @@
 import { AppContacts } from 'components/AppContacts/AppContacts';
 import { useAuth } from 'hooks';
-import { LoadingUser } from 'components/Loading/Loading';
+import { LoadingUser } from 'components/UI/Loading/Loading';
 
 const Contacts = () => {
   const { isLoading } = useAuth();

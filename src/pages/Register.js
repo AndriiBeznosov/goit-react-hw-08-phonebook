@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 
-import { Form } from 'components/Form/Form';
+import { Form } from 'components/UI/Form/Form';
 import { useAuth } from 'hooks';
 import { register } from 'redux/auth/operations';
 
-import { LoadingUser } from 'components/Loading/Loading';
+import { LoadingUser } from 'components/UI/Loading/Loading';
 
 const Register = () => {
   const { isLoading } = useAuth();

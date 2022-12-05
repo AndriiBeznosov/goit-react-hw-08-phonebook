@@ -3,7 +3,7 @@ import { PatternFormat } from 'react-number-format';
 import PropTypes from 'prop-types';
 
 import { Form, Label, Input, Span, Button } from './ContactForm.styled';
-import { InputElement } from '../Input/Input';
+import { InputElement } from '../UI/Input/Input';
 
 export const ContactForm = ({ onSubmit, text }) => {
   const [name, setName] = useState('');

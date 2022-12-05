@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import Lauout from 'components/Layout/Layout';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import { RestrictedRoute } from 'components/RestrictedRoute';
-import { PrivateRoute } from 'components/PrivateRoute';
-import { LoadingUser } from 'components/Loading/Loading';
+import { RestrictedRoute } from 'Routes/RestrictedRoute';
+import { PrivateRoute } from 'Routes/PrivateRoute';
+import { LoadingUser } from 'components/UI/Loading/Loading';
 
 const HomePage = lazy(() => import('pages/Home'));
 const ContactsPage = lazy(() => import('pages/Contacts'));

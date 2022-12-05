@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { BsTrash, BsPersonCircle, BsPen } from 'react-icons/bs';
 
 import { Modal } from 'components/Modal/Modal';
-import { Loading } from 'components/Loading/Loading';
+import { Loading } from 'components/UI/Loading/Loading';
 import {
   List,
   Item,

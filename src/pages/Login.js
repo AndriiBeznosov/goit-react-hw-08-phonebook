@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 
 import { logIn } from 'redux/auth/operations';
-import { Form } from 'components/Form/Form';
+import { Form } from 'components/UI/Form/Form';
 import { useAuth } from 'hooks';
-import { LoadingUser } from 'components/Loading/Loading';
+import { LoadingUser } from 'components/UI/Loading/Loading';
 
 const Login = () => {
   const dispath = useDispatch();
