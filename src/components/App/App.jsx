@@ -13,6 +13,7 @@ const HomePage = lazy(() => import('pages/Home'));
 const ContactsPage = lazy(() => import('pages/Contacts'));
 const LoginPage = lazy(() => import('pages/Login'));
 const RegisterPage = lazy(() => import('pages/Register'));
+const CalculatorPage = lazy(() => import('pages/Calculator'));
 
 export const App = () => {
   const dispath = useDispatch();
@@ -30,6 +31,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Lauout />}>
         <Route index element={<HomePage />} />
+        <Route path="calculator" element={<CalculatorPage />} />
         <Route
           path="contacts"
           element={
